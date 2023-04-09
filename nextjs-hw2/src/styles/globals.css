@@ -1,0 +1,11 @@
+/* main font */
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
+h1{
+  font-family: 'Caveat', cursive;
+  font-size: 5em;
+}
+
+span{
+  color: rgb(96, 96, 96);
+}
