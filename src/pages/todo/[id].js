@@ -5,7 +5,7 @@ import ToDoItem from '../../components/toDoItem'
 export default function ToDos() {
   return (
     <>
-      <Header done={false}/>
+      <Header done={true}/>
       <ToDoItem></ToDoItem>
     </>
   );

@@ -36,6 +36,7 @@ export default function TodoInputs(props) {
         createdOn: new Date(),
       }),
     });
+    setTodo("")
     console.log(response);
   }
 
@@ -57,6 +58,7 @@ export default function TodoInputs(props) {
           <TextField
             id="todo"
             label="ToDo"
+            value={todo}
             sx={{width:"50vw"}}
             onChange={(event) => {
               setTodo(event.target.value);

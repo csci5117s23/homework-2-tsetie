@@ -24,7 +24,7 @@ export default function Header(props) {
             alignItems="center"
             spacing={2}
           >
-            {!done? <Button href="/todos" variant="contained" sx={{ backgroundColor: "white", color: "gray", "&:hover": { backgroundColor: "gray", color: "white" } }}>View Uncompleted tasks</Button>
+            {done? <Button href="/todos" variant="contained" sx={{ backgroundColor: "white", color: "gray", "&:hover": { backgroundColor: "gray", color: "white" } }}>View Uncompleted tasks</Button>
             : <Button variant="contained" href="/done" sx={{ backgroundColor: "white", color: "gray","&:hover": { backgroundColor: "gray", color: "white" }  }}>View Completed Tasks</Button>}
             <UserButton />
           </Stack>
