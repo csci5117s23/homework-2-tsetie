@@ -26,3 +26,11 @@ body {
 .MuiTypography-h5{
   font-family: "Comis";
 }
+
+#LinkTag {
+  text-decoration: none;
+  color: gray;
+}
+#LinkTag:hover{
+  background-color: rgba(214, 213, 213, 0.123);
+}

@@ -1,7 +1,3 @@
-/*
- * Auto generated Codehooks (c) example
- * Install: npm i codehooks-js codehooks-crudlify
- */
 import { app, Datastore } from "codehooks-js";
 import { crudlify } from "codehooks-crudlify";
 import { date, object, string, boolean } from "yup";
@@ -49,44 +45,47 @@ app.use("/todos", (req, res, next) => {
   next();
 });
 
-async function createTodo(req, res, next) {
+async function createTodo(req, res) {
   const conn = await Datastore.open();
-  const newTodo = await conn.insertOne("todoData", req.body);
-  res.json(newTodo);
-  next();
+  const data = await conn.insertOne("todoData", req.body);
+  res.json(data);
 }
 app.post("/todos", createTodo);
 
 async function getTodos(req, res) {
   const conn = await Datastore.open();
-  const userId = req.query.userId;
-  const options = { filter: {userId: userId, completed: false }};
+  const options = { filter: { userId: req.query.userId, completed: false } };
   conn.getMany("todoData", options).json(res);
 }
 app.get("/todos", getTodos);
 
 async function getDoneTodos(req, res) {
   const conn = await Datastore.open();
-  const userId = req.query.userId;
-  const options = { filter: {userId: userId, completed: true }};
+  const options = { filter: { userId: req.query.userId, completed: true } };
   conn.getMany("todoData", options).json(res);
 }
 app.get("/done", getDoneTodos);
 
+async function getSingleTodo(req, res) {
+  const conn = await Datastore.open();
+  const data = await conn.getOne("todoData", req.query.id);
+  res.json(data);
+}
+app.get("/todo", getSingleTodo);
+
 async function updateTodo(req, res) {
   const conn = await Datastore.open();
-  const data = await conn.updateOne('todoData', req.query.id, req.body);
+  const data = await conn.updateOne("todoData", req.params.id, req.body);
   res.json(data);
 }
 app.put("/todos/:id", updateTodo);
 
-// async function getTodoItem(req, res) {
-//   const conn = await Datastore.open();
-//   const id = req.params.id;
-//   const data = await conn.getOne("todoData", id);
-//   res.json(data);
-// }
-// app.get("/todo/:id", getTodoItem);
+async function deleteTodo(req, res) {
+  const conn = await Datastore.open();
+  const data = await conn.removeOne('todoData', req.params.id);
+  res.json(data);
+}
+app.delete("/todos/:id", deleteTodo);
 
 // // some extra logic for GET /id and PUT /id DELETE /id PATCH /id requests.
 // // side effect here will break patch patch by query, but that's OK for my purposes.
