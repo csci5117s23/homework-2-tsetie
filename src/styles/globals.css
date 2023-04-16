@@ -1,11 +1,28 @@
 /* main font */
 @import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+/* Tasks font */
 
-h1{
+body {
+  background-image: linear-gradient(to right,  #8e9eab, #eef2f3);
+}
+
+#siteName {
   font-family: 'Caveat', cursive;
   font-size: 5em;
 }
 
-span{
+#siteNameEndingStyle {
   color: rgb(96, 96, 96);
+}
+#headerBarTitle{
+  font-family: 'Caveat', cursive;
+  font-size: 3em;
+}
+
+#headerBarTitleEnding{
+  color: rgb(96, 96, 96);
+}
+
+.MuiTypography-h5{
+  font-family: "Comis";
 }
